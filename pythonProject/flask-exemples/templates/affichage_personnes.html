@@ -14,9 +14,11 @@
     <form method="get" action="{{ url_for('afficher_personnes') }}">
         <button type="submit">Réinitialiser</button>
     </form>
+    <form method="post" action="{{ url_for('afficher_personnes') }}">
 	<h1>Liste des personnes</h1><br/>
 	<div class="lp_table">
 		<div class="lp_entetes">
+            <div class="lp_entete">case</div>
 			<div class="lp_entete">id</div>
 			<div class="lp_entete">Nom</div>
 			<div class="lp_entete">Prénom</div>
@@ -24,12 +26,15 @@
 		</div>
 		{% for personne in personnes %}
 			<div class="lp_ligne">
+            <div class="lp_cellule"><input type="checkbox" name="personne_id" value="{{ personne['id'] }}"></div>
 				<div class="lp_cellule">{{ personne['id'] }}</div>
 				<div class="lp_cellule">{{ personne['nom'] }}</div>
 				<div class="lp_cellule">{{ personne['prenom'] }}</div>
 				<div class="lp_cellule">{% if personne['role']==1 %}BDD{% endif %}{% if personne['role']==2 %}HTML{% endif %}{% if personne['role']==3 %}Python{% endif %}</div>
 			</div>
 		{% endfor %}
+    <button type="submit">Imprimer ID des lignes cochées</button>
+    </form>
 	</div>
 </div>
 

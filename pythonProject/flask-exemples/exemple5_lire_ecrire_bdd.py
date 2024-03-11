@@ -24,6 +24,7 @@ def index():
 
 @app.route('/afficher_personnes', methods=['GET','POST'])
 def afficher_personnes():
+	personnes_selectionnees = []
 	if request.method == 'POST':
 		recherche= request.form.get('recherche', '')
 		con = lite.connect('exemples.db')
@@ -39,6 +40,10 @@ def afficher_personnes():
 			cur.execute("SELECT id, nom, prenom, role FROM personnes")
 		lignes = cur.fetchall()
 		con.close()
+
+		personnes_selectionnees = request.form.getlist('personne_id')
+		print("ID des personnes sélectionnées :", personnes_selectionnees)
+		# Autre logique de traitement ici...
 		return render_template('affichage_personnes.html', personnes=lignes, recherche=recherche)
 	else:
 		# Si la méthode HTTP est GET, afficher toutes les personnes
@@ -49,6 +54,7 @@ def afficher_personnes():
 		lignes = cur.fetchall()
 		con.close()
 		return render_template('affichage_personnes.html', personnes=lignes, recherche='')
+
 
 @app.route('/ajouter_personne', methods=['GET', 'POST'])
 def ajouter_personne():
