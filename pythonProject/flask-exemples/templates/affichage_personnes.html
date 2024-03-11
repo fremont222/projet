@@ -11,6 +11,9 @@
     <input type="text" name="recherche" placeholder="Recherche">
     <button type="submit">Rechercher</button>
 	</form>
+    <form method="get" action="{{ url_for('afficher_personnes') }}">
+        <button type="submit">Réinitialiser</button>
+    </form>
 	<h1>Liste des personnes</h1><br/>
 	<div class="lp_table">
 		<div class="lp_entetes">

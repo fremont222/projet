@@ -32,8 +32,8 @@ def afficher_personnes():
 		if recherche:
 			# Requête SQL pour rechercher une personne en fonction de son ID
 			cur.execute(
-				"SELECT id, nom, prenom, role FROM personnes WHERE id=? OR nom LIKE ? OR prenom LIKE ? OR role=?",
-				(recherche, '%' + recherche + '%', '%' + recherche + '%', recherche))
+				"SELECT id, nom, prenom, role FROM personnes WHERE id=? OR nom LIKE ? OR prenom LIKE ? ",
+				(recherche, '%' + recherche + '%', '%' + recherche + '%'))
 		else:
 			# Si aucun ID de recherche n'est spécifié, afficher toutes les personnes
 			cur.execute("SELECT id, nom, prenom, role FROM personnes")
