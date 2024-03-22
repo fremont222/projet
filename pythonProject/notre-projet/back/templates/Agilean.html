@@ -6,6 +6,12 @@
 </head>
 <body>
 <h1>Agilean </h1>
+ <h2>Liste des codes des pièces</h2>
+    <ul>
+        {% for piece in pieces %}
+            <li>{{ piece['code_piece'] }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
 
