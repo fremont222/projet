@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commande enregistrée </title>
+    <style>
+        body {
+            background-image: url('../static/imgfond.png');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .option-container {
+            margin: 10px;
+            align-items: center;
+        }
+        label {
+            display: flex;
+            align-items: center;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>Commande enregistrée</p>
+    <br> <br>
+    <form action="/Code" method="post">
+        <input type="submit" value="Revenir à la page d'accueil">
+    </form>
+</body>
+</html>

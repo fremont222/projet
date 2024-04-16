@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-
 @app.route('/')
 def index():
+    return render_template('Code.html')
+
+@app.route('/Code', methods=['POST'])
+def Code():
     return render_template('Code.html')
 
 @app.route('/CLF', methods=['POST'])
@@ -32,6 +35,11 @@ def Agigreen():
 def Agilog():
     # Code pour gérer la sélection de Agilog
     return render_template('Agilog.html')
+
+@app.route('/Commande', methods=['POST'])
+def Commande():
+    # Code pour gérer la sélection de Agilog
+    return render_template('Commande.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5678)
