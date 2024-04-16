@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Fonction pour se connecter à la base de données
 def connect_db():
-    return sqlite3.connect(r'Z:\Mes Documents\GitHub\projet\pythonProject\notre-projet\projet_test.db')
+    return sqlite3.connect(r'C:\Users\agath\Desktop\2A\Maths info\Base de donnée- DBBrowser\projet_test.db')
 
 # Route pour afficher la page d'achat
 @app.route('/achat')
