@@ -24,5 +24,14 @@ def CCF():
     # Code pour gérer la sélection de CCF
     return render_template('CCF.html')
 
+@app.route('/Agigreen', methods=['POST'])
+def Agigreen():
+    # Code pour gérer la sélection de Agigreen
+    return render_template('Agigreen.html')
+@app.route('/Agilog', methods=['POST'])
+def Agilog():
+    # Code pour gérer la sélection de Agilog
+    return render_template('Agilog.html')
+
 if __name__ == '__main__':
     app.run(debug=True, port=5678)
