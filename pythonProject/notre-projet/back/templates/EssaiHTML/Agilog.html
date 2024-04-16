@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page 1</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .links a {
+            margin: 0 100px; /* Espacement horizontal entre les liens */
+        }
+        body {
+            background-image: url('imgfond.png'); /* Ajout de l'image de fond */
+            background-size: cover; /* Assure que l'image couvre tout l'arrière-plan */
+            background-position: center; /* Centre l'image de fond */
+        }
+    </style>
+</head>
+<body>
+    <h1>Agilog</h1>
+    <div class="links">
+        <a href="stock.html"> Lien Stock</a>
+        <a href="envoie.html">Lien Envoie</a>
+        <a href="commande.html">Lien Commande</a>
+    </div>
+    afficher sous les liens des tableaux de bdd si possible ou alors juste les différentes valeurs de stocks
+    sinon enlever les liens et mettre les valeurs venu de la bdd, exmple en dessous pour récuperer des noms
+    <?php
+// Connexion à la base de données
+$mysqli = new mysqli("hostname", "username", "password", "database");
+
+// Vérifiez la connexion
+if($mysqli === false){
+    die("ERROR: Could not connect. " . $mysqli->connect_error);
+}
+
+// Exécutez une requête pour obtenir des données de la table
+$sql = "SELECT id, firstname, lastname FROM users";
+if($result = $mysqli->query($sql)){
+    if($result->num_rows > 0){
+        // Début du tableau
+        echo "<table>";
+            echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>First Name</th>";
+                echo "<th>Last Name</th>";
+            echo "</tr>";
+        // Récupération des données de chaque ligne
+        while($row = $result->fetch_array()){
+            echo "<tr>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['firstname'] . "</td>";
+                echo "<td>" . $row['lastname'] . "</td>";
+            echo "</tr>";
+        }
+        // Fin du tableau
+        echo "</table>";
+        // Libérez le jeu de résultats
+        $result->free();
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+}
+
+// Fermez la connexion
+$mysqli->close();
+?>
+
+    <p>page agilog</p>
+    <a href="Code.html">Retour à la page principale</a>
+</body>
+</html>
