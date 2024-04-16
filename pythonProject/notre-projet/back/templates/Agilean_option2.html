@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Options sélectionnées</title>
+</head>
+<body>
+    <h1>Options sélectionnées</h1>
+    <p>Voiture sélectionnée : {{ voiture_selectionnee }}</p>
+    <form method="post" action="{{ url_for('Agilean_options') }}">
+        <input type="checkbox" name="option" value="AN"> AN<br>
+        <input type="checkbox" name="option" value="CA"> CA<br>
+        <input type="checkbox" name="option" value="AA"> AA<br>
+        <input type="submit" value="Valider">
+    </form>
+</body>
+</html>

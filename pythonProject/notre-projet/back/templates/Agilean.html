@@ -1,16 +1,51 @@
 <!doctype html>
 <html>
 <head>
-<title>Programmation web python</title>
-<link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="style.css") }}'>
+    <title>Programmation web python</title>
+    <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="style.css") }}'>
+    <script>
+        function showOptions() {
+            document.getElementById("voitures").style.display = "none";
+            document.getElementById("options").style.display = "block";
+        }
+    </script>
 </head>
 <body>
     <h1>Agilean</h1>
     <h2>Codes Voiture</h2>
-    <ul>
-        {% for piece in pieces %}
-            <li>{{ piece[0] }}</li>
-        {% endfor %}
-    </ul>
-</body>
+    <div id="voitures">
+        <form method="post" action="{{ url_for('Agilean') }}">
+            {% for piece in pieces %}
+            <li>
+                <div class="lp_cellule">
+                    <input type="checkbox" name="voiture_id_{{ piece[0] }}" value="{{ piece[0] }}">
+                </div>
+                {{ piece[0] }}
+            </li>
+            {% endfor %}
+            <input type="button" value="Valider" onclick="showOptions()">
+        </form>
+    </div>
 
+    <div id="options" style="display:none">
+        <h2>Options</h2>
+        <form method="post" action="{{ url_for('Agilean_options') }}">
+            <ul>
+                <li>
+                    <input type="checkbox" name="option" value="AN">
+                    AN
+                </li>
+                <li>
+                    <input type="checkbox" name="option" value="CA">
+                    CA
+                </li>
+                <li>
+                    <input type="checkbox" name="option" value="AA">
+                    AA
+                </li>
+            </ul>
+            <input type="submit" value="Valider">
+        </form>
+    </div>
+</body>
+</html>

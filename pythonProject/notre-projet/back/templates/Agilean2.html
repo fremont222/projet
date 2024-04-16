@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Agilean - Choix de Voiture</title>
+</head>
+<body>
+    <h1>Agilean</h1>
+    <h2>Choisissez une voiture :</h2>
+    <form method="post" action="{{ url_for('Agilean') }}">
+        {% for piece in pieces %}
+        <input type="radio" name="voiture" value="{{ piece[0] }}"> {{ piece[0] }}<br>
+        {% endfor %}
+        <input type="submit" value="Valider">
+    </form>
+</body>
+</html>
