@@ -67,12 +67,11 @@ def Commande():
     print(option)
     L_bool=str_list_to_bool_list(option)
     print(L_bool)
-    con = lite.connect('projet_test2.db')
+    con = lite.connect('projet_test3.db')
     cur = con.cursor()
-    """ 
-    idmax = cur.execute("SELECT max(id_commande) FROM commande_voiture")
-    """
-    cur.execute("INSERT INTO commande_voiture VALUES (?, ?, ?, ?,?)", ( 1, a, L_bool[0],L_bool[1],L_bool[2]))
+    cur.execute("SELECT max(id_commande_voiture) FROM commande_voiture")
+    idmax = cur.fetchone()[0]
+    cur.execute("INSERT INTO commande_voiture VALUES (?, ?, ?, ?,?)", ( idmax+1, a, L_bool[0],L_bool[1],L_bool[2]))
 
     con.commit()
     con.close()
