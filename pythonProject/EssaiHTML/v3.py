@@ -46,10 +46,10 @@ def CCF():
     print(a)
     return render_template('CCF.html')
 
-@app.route('/Agigreen', methods=['POST'])
-def Agigreen():
+@app.route('/Agilean', methods=['POST'])
+def Agilean():
     # Code pour gérer la sélection de Agigreen
-    return render_template('Agigreen.html')
+    return render_template('Agilean.html')
 @app.route('/Agilog', methods=['POST'])
 def Agilog():
     # Code pour gérer la sélection de Agilog
