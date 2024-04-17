@@ -4,7 +4,8 @@ import sqlite3 as lite
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-type_voiture = ["CLF", "CLO", "CCF", "CCO"]
+type_voiture = ["CLF", "CLO", "CCO","CCF"]
+type_option =["An","CA","AA"]
 
 @app.route('/')
 def index():
@@ -54,15 +55,31 @@ def Agilog():
     # Code pour gérer la sélection de Agilog
     return render_template('Agilog.html')
 
+
+def str_list_to_bool_list(str_list):
+    mapping = {"An": 0, "CA": 1, "AA": 2}
+    bool_list = [False] * len(mapping)
+    for str_value in str_list:
+        if str_value in mapping:
+            index = mapping[str_value]
+            bool_list[index] = True
+    return bool_list
+
 @app.route('/Commande', methods=['POST'])
 def Commande():
+    """
     type_voiture = session.get('type_voiture')
     con = lite.connect('projet_test.db')
     pieces = con.execute('SELECT code_voiture FROM voiture_dans_commande').fetchall()
     con.close()
+    """
     print(a)
-    # Code pour gérer la sélection de Agilog
-    return render_template('Commande.html')
+    if request.method == 'POST':
+        option= request.form.getlist('option')
+    print(option)
+    L_bool=str_list_to_bool_list(option)
+    print(L_bool)
+    return render_template('Commande.html', a=a, option=option)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5678)

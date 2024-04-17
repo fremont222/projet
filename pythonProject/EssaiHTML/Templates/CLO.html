@@ -73,26 +73,26 @@
         </div>
         <div class="form-container">
             <h1>Commandez votre CLO</h1>
-            <div class="option-container">
-                <input type="checkbox" id="antenne" name="option" onchange="calculerPrix()">
-                <label for="antenne">
-                    <img src="../static/antenne.png" alt="Antenne" class="option-image">Antenne (100$)
-                </label>
-            </div>
-            <div class="option-container">
-                <input type="checkbox" id="crochet" name="option" onchange="calculerPrix()">
-                <label for="crochet">
-                    <img src="../static/crochet.png" alt="Crochet" class="option-image">Crochet d'attelage (200$)
-                </label>
-            </div>
-            <div class="option-container">
-                <input type="checkbox" id="attache" name="option" onchange="calculerPrix()">
-                <label for="attache">
-                    <img src="../static/attache.png" alt="Attache" class="option-image">Attache accessoire (400$)
-                </label>
-            </div>
-            <p id="prixTotal">Prix total: 12000$</p>
             <form action="/Commande" method="post">
+                <div class="option-container">
+                    <input type="checkbox" id="An" name="option" value="An" onchange="calculerPrix()">
+                    <label for="antenne">
+                    <img src="../static/antenne.png" alt="Antenne" class="option-image">Antenne (100$)
+                    </label>
+                </div>
+                <div class="option-container">
+                    <input type="checkbox" id="CA" name="option" value="CA" onchange="calculerPrix()">
+                    <label for="crochet">
+                        <img src="../static/crochet.png" alt="Crochet" class="option-image">Crochet d'attelage (200$)
+                    </label>
+                </div>
+                <div class="option-container">
+                    <input type="checkbox" id="AA" name="option" value="AA" onchange="calculerPrix()">
+                    <label for="attache">
+                        <img src="../static/attache.png" alt="Attache" class="option-image">Attache accessoire (400$)
+                    </label>
+                </div>
+            <p id="prixTotal">Prix total: 12000$</p>
                 <input type="submit" value="Commander">
             </form>
         </div>
