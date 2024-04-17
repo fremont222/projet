@@ -44,8 +44,27 @@ def CCF():
 
 @app.route('/Agilean', methods=['POST'])
 def Agilean():
-    # Code pour gérer la sélection de Agigreen
+    # Code pour gérer la sélection de Agilean
     return render_template('Agilean.html')
+@app.route('/Commande_agilean', methods=['POST'])
+def Commande_agilean():
+    # Code pour gérer la sélection de Agilean
+    return render_template('Commande_agilean.html')
+
+@app.route('/Commande_agilog', methods=['POST'])
+def Commande_agilog():
+    # Code pour gérer la sélection de Agilean
+    return render_template('Commande_agilog.html')
+
+@app.route('/Stocks_agilean', methods=['POST'])
+def Stocks_agilean():
+    # Code pour gérer la sélection de Agilean
+    return render_template('Stocks_agilean.html')
+
+@app.route('/Stocks_agilog', methods=['POST'])
+def Stocks_agilog():
+    # Code pour gérer la sélection de Agilean
+    return render_template('Stocks_agilog.html')
 @app.route('/Agilog', methods=['POST'])
 def Agilog():
     # Code pour gérer la sélection de Agilog
