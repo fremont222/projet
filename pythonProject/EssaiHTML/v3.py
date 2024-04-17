@@ -20,7 +20,6 @@ def CLF():
     # Code pour gérer la sélection de CLF
     global a
     a = type_voiture[0]
-    print(a)
     return render_template('CLF.html')
 
 @app.route('/CLO', methods=['POST'])
@@ -28,7 +27,6 @@ def CLO():
     # Code pour gérer la sélection de CLO
     global a
     a = type_voiture[1]
-    print(a)
     return render_template('CLO.html')
 
 @app.route('/CCO', methods=['POST'])
@@ -36,14 +34,12 @@ def CCO():
     # Code pour gérer la sélection de CCO
     global a
     a = type_voiture[2]
-    print(a)
     return render_template('CCO.html')
 @app.route('/CCF', methods=['POST'])
 def CCF():
     # Code pour gérer la sélection de CCF
     global a
     a = type_voiture[3]
-    print(a)
     return render_template('CCF.html')
 
 @app.route('/Agilean', methods=['POST'])
@@ -54,7 +50,6 @@ def Agilean():
 def Agilog():
     # Code pour gérer la sélection de Agilog
     return render_template('Agilog.html')
-
 
 def str_list_to_bool_list(str_list):
     mapping = {"An": 0, "CA": 1, "AA": 2}
@@ -67,18 +62,20 @@ def str_list_to_bool_list(str_list):
 
 @app.route('/Commande', methods=['POST'])
 def Commande():
-    """
-    type_voiture = session.get('type_voiture')
-    con = lite.connect('projet_test.db')
-    pieces = con.execute('SELECT code_voiture FROM voiture_dans_commande').fetchall()
-    con.close()
-    """
-    print(a)
     if request.method == 'POST':
         option= request.form.getlist('option')
     print(option)
     L_bool=str_list_to_bool_list(option)
     print(L_bool)
+    con = lite.connect('projet_test2.db')
+    cur = con.cursor()
+    """ 
+    idmax = cur.execute("SELECT max(id_commande) FROM commande_voiture")
+    """
+    cur.execute("INSERT INTO commande_voiture VALUES (?, ?, ?, ?,?)", ( 1, a, L_bool[0],L_bool[1],L_bool[2]))
+
+    con.commit()
+    con.close()
     return render_template('Commande.html', a=a, option=option)
 
 if __name__ == '__main__':
