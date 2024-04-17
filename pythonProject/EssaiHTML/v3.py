@@ -72,7 +72,6 @@ def Commande():
     cur.execute("SELECT max(id_commande_voiture) FROM commande_voiture")
     idmax = cur.fetchone()[0]
     cur.execute("INSERT INTO commande_voiture VALUES (?, ?, ?, ?,?)", ( idmax+1, a, L_bool[0],L_bool[1],L_bool[2]))
-
     con.commit()
     con.close()
     return render_template('Commande.html', a=a, option=option)
